@@ -28,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-family: SF Distant Galaxy Alternate, sans-serif, monospace;
+    font-family: SF Distant Galaxy Alternate, 'Star Wars', sans-serif, monospace;
     color: var(--white);
     font-style: normal;
     font-weight: 400;
@@ -36,7 +36,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h2, span, li, button {
-    font-family: SF Distant Galaxy, sans-serif, monospace;
+    font-family: SF Distant Galaxy, 'Star Wars', sans-serif, monospace;
     color: var(--white);
     font-style: italic;
     font-weight: 400;
@@ -54,6 +54,16 @@ const GlobalStyles = createGlobalStyle`
 
   li {
     list-style-type: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--yellow);
+    border-radius: 0.4rem;
+    transition: background 0.4s ease-in;
   }
 `
 export default GlobalStyles;

@@ -1,4 +1,4 @@
-import { ReactComponent as Reply } from '@src/Assets/Icons/reply.svg';
+import { CornerDownLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from './styles';
 
@@ -8,7 +8,7 @@ export function GoBack() {
 
   return (
     <Button onClick={()=> navigate(-1)}>
-      <Reply />
+      <CornerDownLeft />
     </Button>
   )
 }

@@ -7,8 +7,8 @@ export const Container = styled.main`
   align-items: center;
   justify-content: space-between;
   
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 
   padding: 0 4rem;
 
@@ -52,6 +52,7 @@ export const Container = styled.main`
     svg {
       height: 80%;
       width: auto;
+      object-fit: cover;  
     }
   }
 

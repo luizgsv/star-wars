@@ -1,7 +1,5 @@
-interface KeyValuesSubTitle {
-  [x: string]: string;
-}
+import { KeyValues } from "@src/Models/Interfaces/keyValues";
 
-export const objectSubTitle: KeyValuesSubTitle = {
+export const objectSubTitle: KeyValues = {
   ['character']: 'Personagens'
 }
