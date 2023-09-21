@@ -5,11 +5,13 @@ import { IPerson } from "@src/Models/Interfaces/person";
 import { IRoot } from "@src/Models/Interfaces/root";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { useLocation, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { Container } from "./styles";
-import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function Character() {
+
+  const [peopleData, setPeopleData] = useState<IRoot<IPerson>>()
 
   const { search } = useLocation()
 
@@ -19,18 +21,19 @@ export function Character() {
 
   const getCharacter = async (params: string) => {
     const { data } = await apiStarWars.get<IRoot<IPerson>>(`/people${params}`)
-    return data
+
+    setPeopleData((prevState)=> ({...prevState, ...data, results: [...prevState?.results ?? [], ...data.results]}))
   }
 
-  const { data: peopleData } = useQuery(['character', params], async () => getCharacter(params))
-  console.log(peopleData);
+   useQuery(['character', params], async () => getCharacter(params))
   
   const handlePagination = async (link: string) => {
     const cutSearch = link.split('/').pop() ?? ''
-    getCharacter(cutSearch)
     navigate('/character' + cutSearch)
   }
 
+  //link https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+  
   return (
     <Container>
       {peopleData && ( 
@@ -42,7 +45,7 @@ export function Character() {
 
           <article>
             {React.Children.toArray(
-              peopleData.results.map(({ name, url }) => (
+              peopleData.results?.map(({ name, url }) => (
                 <Card value={name} link={'/person'} request={url} />
               )))
             }

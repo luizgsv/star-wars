@@ -10,11 +10,11 @@ export function SystemLayout({ children }: { children: ReactNode }) {
   const isLoading = !!isFetchingCharacter
 
   return (
-    <Layout isLoading={isLoading}>
+    <>
       {isLoading && <Loading />}
-      <div>
-        {children}
-      </div>
-    </Layout>
+      <Layout isLoading={isLoading}> 
+          {children}
+      </Layout>
+    </>
   )
 }
