@@ -15,7 +15,7 @@ export const Layout = styled.div<ILayout>`
 
   position: relative;
 
-  padding: 0.875rem; // 14 pixels
+  /* padding: 0.875rem; // 14 pixels */
 
   ${({ isLoading })=> isLoading && 'opacity: 40%'}
 

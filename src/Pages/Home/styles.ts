@@ -46,17 +46,39 @@ export const Container = styled.main`
     align-items: end;
     justify-content: flex-end;
 
-    height: 100%;
     width: fit-content;
 
-    top: 2rem;
+    bottom: 0;
     right: 1rem;
     position: absolute;
 
     svg {
-      height: 80%;
+      height: 34rem;
       width: auto;
       object-fit: cover;  
+    }
+
+    @media(max-width: 1080px) {
+
+      svg {
+        height: 26rem;
+      }
+    }
+
+    @media(max-width: 720px) {
+
+      top: 4.5rem;
+      right: 0;
+
+      svg {
+        height: 22rem;
+      }
+    }
+
+    @media(max-width: 380px) {
+      svg {
+        height: 20rem;
+      }
     }
   }
 
@@ -66,5 +88,8 @@ export const Li = styled.li<IsActive>`
   font-size: 2rem;
   transition: .2s all;
 
-  cursor: ${({ isActive })=> isActive ? 'pointer' : 'not-allowed'};
+  cursor: pointer;
+
+  ${({ isActive })=> !isActive && 'cursor: not-allowed'}
+
 `

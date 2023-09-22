@@ -7,9 +7,15 @@ export const Container = styled.header`
   justify-content: center;
   align-items: center;
 
+  width: 100%;
+
   gap: 2rem;
 
   margin-bottom: 2rem;
+
+  z-index: 999;
+  position: absolute;
+
 `
 
 export const Title = styled.h1`

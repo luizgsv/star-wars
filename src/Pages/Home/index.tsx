@@ -43,15 +43,21 @@ export function Home() {
       
       <nav>
         <ul>
-          {React.Children.toArray(anchors.map(({ label, link, isActive }) => (
-            isActive ? (
-              <Li isActive={isActive}>
-                <Link to={link}>
-                  {label}
-                </Link>
-              </Li>
-            ) : <Li isActive={isActive}>{ label }</Li> 
-          )))}
+          {
+            React.Children.toArray(anchors.map(({ label, link, isActive }) => (
+              isActive ? (
+                <Li isActive={isActive}>
+                  <Link to={link}>
+                    {label}
+                  </Link>
+                </Li>
+              ) : (
+                  <Li isActive={isActive}>
+                    {label}
+                  </Li>
+                )
+            )))
+          }
         </ul>
       </nav>
 
