@@ -14,8 +14,12 @@ export const Container = styled.main`
   section {
     display: flex;
     flex-direction: row;
+
+    align-items: center;
     
-    max-height: 20rem;
+    height: 24rem;
+
+    overflow: auto;
    
     gap: 1rem;
 

@@ -1,34 +1,40 @@
 import { ReactComponent as Stormtroopers } from '@src/Assets/Img/Stormtroopers .svg'
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container } from './styles'
+import { Container, Li } from './styles'
 
 export function Home() {
 
   const anchors = [
     {
       link: '/character',
-      label: 'Personagens'
+      label: 'Personagens',
+      isActive: true
     },
     {
       link: '/films',
-      label: 'Filmes'
+      label: 'Filmes',
+      isActive: false
     },
     {
       link: '/starChips',
-      label: 'Naves Estelares'
+      label: 'Naves Estelares',
+      isActive: false
     },
     {
       link: '/vehicles',
-      label: 'Veículos'
+      label: 'Veículos',
+      isActive: false
     },
     {
       link: '/species',
-      label: 'Espécies'
+      label: 'Espécies',
+      isActive: false
     },
     {
       link: '/planets',
-      label: 'Planetas'
+      label: 'Planetas',
+      isActive: false
     }
   ]
 
@@ -37,12 +43,14 @@ export function Home() {
       
       <nav>
         <ul>
-          {React.Children.toArray(anchors.map((item) => (
-            <li>
-              <Link to={item.link}>
-                {item.label}
-              </Link>
-            </li>
+          {React.Children.toArray(anchors.map(({ label, link, isActive }) => (
+            isActive ? (
+              <Li isActive={isActive}>
+                <Link to={link}>
+                  {label}
+                </Link>
+              </Li>
+            ) : <Li isActive={isActive}>{ label }</Li> 
           )))}
         </ul>
       </nav>

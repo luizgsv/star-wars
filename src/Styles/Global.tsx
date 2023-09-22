@@ -35,7 +35,7 @@ const GlobalStyles = createGlobalStyle`
     line-height: normal;
   }
 
-  h2, span, li, button {
+  h2, span, li, button, h3 {
     font-family: SF Distant Galaxy, 'Star Wars', sans-serif, monospace;
     color: var(--white);
     font-style: italic;
@@ -58,6 +58,7 @@ const GlobalStyles = createGlobalStyle`
 
   ::-webkit-scrollbar {
     width: 0.5rem;
+    height: 0.5rem;
   }
 
   ::-webkit-scrollbar-thumb {

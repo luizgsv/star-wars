@@ -16,8 +16,10 @@ export const Title = styled.h1`
   color: var(--black);
   font-size: 4rem;
   text-shadow: var(--star-wars-shadow);
+  text-align: center;
 `
 
 export const SubTitle = styled.h2`
-  font-size: 2rem;
+  font-size: 1.5rem;
+  text-align: center;
 `

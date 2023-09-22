@@ -1,17 +1,16 @@
 import { ButtonStyle } from "@src/Components/Button/styles";
 import { Card } from "@src/Components/Card";
+import { InputComponent } from "@src/Components/Input";
 import { apiStarWars } from "@src/Hook/api";
 import { IPerson } from "@src/Models/Interfaces/person";
 import { IRoot } from "@src/Models/Interfaces/root";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import React, { useState } from "react";
-import { Container } from "./styles";
+import React, { ChangeEvent, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Container } from "./styles";
 
 export function Character() {
-
-  const [peopleData, setPeopleData] = useState<IRoot<IPerson>>()
 
   const { search } = useLocation()
 
@@ -19,42 +18,65 @@ export function Character() {
 
   const params = search ? search : '?page=1'
 
+  const [peopleDataFilter, setPeopleDataFilter] = useState<IRoot<IPerson>>()
+
   const getCharacter = async (params: string) => {
     const { data } = await apiStarWars.get<IRoot<IPerson>>(`/people${params}`)
-
-    setPeopleData((prevState)=> ({...prevState, ...data, results: [...prevState?.results ?? [], ...data.results]}))
+    return data
   }
 
-   useQuery(['character', params], async () => getCharacter(params))
+  const { data: peopleData } = useQuery(['character', params], async () => getCharacter(params))
   
   const handlePagination = async (link: string) => {
     const cutSearch = link.split('/').pop() ?? ''
+    getCharacter(cutSearch)
     navigate('/character' + cutSearch)
   }
 
-  //link https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
-  
+  const handleSearch = async (event: ChangeEvent<HTMLInputElement>) => {
+    const inputValue = event.currentTarget.value.toLowerCase();
+
+    if (!inputValue) return setPeopleDataFilter(undefined)
+
+    if (!peopleData) return;
+
+    const filter = peopleData.results.filter(({ name }) => {
+      return !name.toLowerCase().indexOf(inputValue)
+    })
+
+    setPeopleDataFilter({...peopleData, results: filter})
+  };
+
+  const charactersData = peopleDataFilter ?? peopleData
+
   return (
     <Container>
-      {peopleData && ( 
+
+      <InputComponent handleSearch={handleSearch}/>
+
+      {charactersData && ( 
 
         <section>
-          <ButtonStyle onClick={() => handlePagination(peopleData.previous)}>
-            <ChevronLeft />
-          </ButtonStyle>
+          {!peopleDataFilter && (
+            <ButtonStyle onClick={() => handlePagination(charactersData.previous)}>
+              <ChevronLeft />
+            </ButtonStyle>
+          )}
 
-          <article>
+          <article>  
+
             {React.Children.toArray(
-              peopleData.results?.map(({ name, url }) => (
+              charactersData.results.map(({ name, url }) => (
                 <Card value={name} link={'/person'} request={url} />
               )))
             }
           </article>
-          
-          <ButtonStyle onClick={() => handlePagination(peopleData.next)}>
-            <ChevronRight />
-          </ButtonStyle>
 
+          {!peopleDataFilter && (          
+            <ButtonStyle onClick={() => handlePagination(charactersData.next)}>
+              <ChevronRight />
+            </ButtonStyle>
+          )}
         </section>
       )}
 

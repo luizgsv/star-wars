@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IsActive {
+  isActive: boolean
+}
+
 export const Container = styled.main`
   display: flex;
   flex-direction: row;
@@ -56,4 +60,11 @@ export const Container = styled.main`
     }
   }
 
+`
+
+export const Li = styled.li<IsActive>`
+  font-size: 2rem;
+  transition: .2s all;
+
+  cursor: ${({ isActive })=> isActive ? 'pointer' : 'not-allowed'};
 `

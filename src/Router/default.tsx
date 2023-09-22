@@ -7,7 +7,7 @@ import { Outlet, useLocation } from "react-router-dom";
 export function DefaultElement() {
 
   const location = useLocation()
-  const cutPathname = location.pathname.substring(1)
+  const cutPathname = location.pathname.split('/')[1]
   
   return (
     <>
