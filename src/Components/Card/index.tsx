@@ -13,7 +13,8 @@ import { ICard } from "@src/Models/Interfaces/card";
 export function Card({ value, link, request }: ICard) {
   
   // const que armazena o id retirado da request
-  const cutIdToNavigated = request.split('/').at(-2)
+  const arrayLink = request.split('/')
+  const cutIdToNavigated = arrayLink[arrayLink.length -2]
   
   // junção do link de navegação com o parâmetro id
   const linkNavigate = `${link}/${cutIdToNavigated}`

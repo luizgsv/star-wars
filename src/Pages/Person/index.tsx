@@ -57,7 +57,8 @@ export function Person() {
     for (const film of object.films) { 
 
       // Extrai o ID do filme a partir da URL.
-      const cutId = film.split('/').at(-2) ?? 0
+      const arrCutString = film.split('/')
+      const cutId = arrCutString[arrCutString.length -2]
 
       // Busca informações sobre o filme com base no ID
       const findFilm = await getFilmsById(+cutId)
