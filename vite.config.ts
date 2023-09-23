@@ -5,6 +5,7 @@ import svgr from 'vite-plugin-svgr'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/star-wars/',
   plugins: [svgr(), react()],
   resolve: {
     alias: [{ find: '@src', replacement: path.resolve(__dirname, 'src') }]
