@@ -1,5 +1,7 @@
 import { ReactComponent as NotFoundSVG } from '@src/Assets/Img/404.svg';
 import { Container } from "./styles";
+import { Button } from '@src/Components/GoBack/styles';
+import { useNavigate } from 'react-router-dom';
 
 /**
  * Componente PageNotFound
@@ -9,10 +11,16 @@ import { Container } from "./styles";
  * @returns {JSX.Element} - Retorna um elemento JSX que representa a página de erro 404.
  */
 export function PageNotFound() {
+
+  const navigate = useNavigate();
+  
   return (
     <Container>
       <NotFoundSVG />
       <span>"You lost your own way my son"</span>
+      <Button onClick={()=> navigate('/home')}>
+        Navegar
+      </Button>
     </Container>
   )
 }
