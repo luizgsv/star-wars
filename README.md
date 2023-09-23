@@ -10,6 +10,15 @@ O Star Wars Characters é uma aplicação frontend que permite aos fãs da saga 
 
 **Nota:** As informações sobre filmes, planetas, naves, veículos e espécies ainda não estão disponíveis na primeira versão do projeto.
 
+**Design do Projeto**
+
+O design completo deste projeto está disponível no Figma. Você pode acessá-lo através do seguinte link:
+
+[Design do Star Wars Characters no Figma](https://www.figma.com/file/FWXHKkatQQlOZseLLHCgxt/Star-Wars?type=design&mode=design&t=Jwf6845Dq40eoLpS-1)
+
+O design no Figma oferece uma visão detalhada do visual e da estrutura do projeto, ajudando na compreensão e implementação das características visuais.
+
+
 ## Funcionalidades Principais
 
 - Pesquisar e visualizar informações sobre personagens, incluindo:
@@ -28,6 +37,20 @@ O Star Wars Characters é uma aplicação frontend que permite aos fãs da saga 
 4. Inicie o servidor de desenvolvimento: `npm start`
 
 A aplicação estará disponível em `http://localhost:3000` em seu navegador.
+
+## Aviso
+
+Para visualizar o projeto com a fonte correta de acordo com o design, certifique-se de baixar e instalar as fontes que estão localizadas na pasta `/src/Assets/Fonts`. As fontes desempenham um papel importante na aparência e na estética do projeto, e a instalação delas garantirá uma experiência visual consistente.
+
+Para instalar as fontes, siga estas etapas:
+
+1. Navegue até a pasta `/src/Assets/Fonts` no repositório.
+2. Baixe as fontes necessárias (os arquivos de fonte geralmente têm extensões como `.ttf` ou `.otf`).
+3. Instale as fontes no seu sistema operacional (isso pode variar dependendo do sistema que você está usando).
+4. Reinicie ou recarregue a aplicação para que as fontes estejam disponíveis e sendo usadas de acordo com o design original.
+
+Agora você estará pronto para visualizar o projeto com a fonte correta e desfrutar da experiência de design completa.
+
 
 
 ## Contribuição
