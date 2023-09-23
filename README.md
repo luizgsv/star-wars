@@ -61,7 +61,7 @@ Aqui estão as principais bibliotecas e ferramentas que foram utilizadas neste p
 
 - **Vite Plugin SVGR (vite-plugin-svgr)**: Um plugin Vite que permite importar arquivos SVG como componentes React.
 
-Cada uma dessas ferramentas e bibliotecas desempenha um papel fundamental no desenvolvimento e na funcionalidade
+Cada uma dessas ferramentas e bibliotecas desempenha um papel fundamental no desenvolvimento e na funcionalidade deste projeto, tornando-o mais eficiente e interativo.
 
 ## Contato
 
