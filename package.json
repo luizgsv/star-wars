@@ -1,6 +1,5 @@
 {
   "name": "star-wars",
-  "homepage": "https://luizgsv.github.io/star-wars/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -32,7 +31,6 @@
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
-    "gh-pages": "^6.0.0",
     "typescript": "^5.2.2",
     "vite": "^4.4.5"
   }

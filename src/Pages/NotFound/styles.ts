@@ -1,3 +1,4 @@
+import { ButtonStyle } from "@src/Components/Button/styles";
 import styled from "styled-components";
 
 export const Container = styled.main`
@@ -9,7 +10,11 @@ export const Container = styled.main`
 
   height: 100vh;
 
+  gap: 1rem;
+
   span {
     font-size: 2rem;
   }
 `
+
+export const Button = styled(ButtonStyle)``

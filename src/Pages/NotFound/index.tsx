@@ -1,6 +1,5 @@
 import { ReactComponent as NotFoundSVG } from '@src/Assets/Img/404.svg';
-import { Container } from "./styles";
-import { Button } from '@src/Components/GoBack/styles';
+import { Container, Button} from "./styles";
 import { useNavigate } from 'react-router-dom';
 
 /**
