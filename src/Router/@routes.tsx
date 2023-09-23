@@ -17,7 +17,7 @@ export function RouterProvider() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/" element={<Navigate to='/home' />} />
+      <Route path="/star-wars/" element={<Navigate to='/home' />} />
         <Route path='' element={<DefaultElement />}  >
           <Route path='home' element={<Home />} />
           <Route path='Character' element={<Character />} />
