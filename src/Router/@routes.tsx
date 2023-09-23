@@ -17,14 +17,14 @@ export function RouterProvider() {
   return (
     <BrowserRouter>
       <Routes>
-      <Route path="/star-wars/" element={<Navigate to='/home' />} />
+      <Route path="/" element={<Navigate to='/home' />} />
         <Route path='' element={<DefaultElement />}  >
           <Route path='home' element={<Home />} />
           <Route path='Character' element={<Character />} />
           <Route path='Person/:id' element={<Person />} />
         </Route>
 
-        <Route path='*' element={<Navigate to={'/home'}/>} />
+        <Route  path='*' Component={PageNotFound} />
       </Routes>
     </BrowserRouter>
   )
