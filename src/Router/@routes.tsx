@@ -24,7 +24,7 @@ export function RouterProvider() {
           <Route path='Person/:id' element={<Person />} />
         </Route>
 
-        <Route  path='*' Component={PageNotFound} />
+        <Route path='*' element={<Navigate to={'/home'}/>} />
       </Routes>
     </BrowserRouter>
   )
