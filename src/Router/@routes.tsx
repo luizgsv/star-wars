@@ -15,7 +15,7 @@ import { Person } from "@src/Pages/Person";
 export function RouterProvider() { 
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/react-vite-gh-pages/">
       <Routes>
       <Route path="/star-wars/" element={<Navigate to='/home' />} />
         <Route path='' element={<DefaultElement />}  >
