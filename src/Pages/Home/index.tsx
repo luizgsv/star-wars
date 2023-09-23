@@ -5,6 +5,15 @@ import { Container, Li } from './styles'
 
 export function Home() {
 
+  /**
+   * Array de âncoras de navegação
+   * 
+   * Este array contém objetos que representam âncoras de navegação para diferentes seções ou páginas.
+   * Cada objeto possui as seguintes propriedades:
+   * - link: A URL da âncora.
+   * - label: O rótulo ou texto a ser exibido para a âncora.
+   * - isActive: Uma flag para indicar se a âncora está atualmente ativa.
+   */
   const anchors = [
     {
       link: '/character',
@@ -40,22 +49,13 @@ export function Home() {
 
   return (
     <Container>
-      
       <nav>
         <ul>
           {
             React.Children.toArray(anchors.map(({ label, link, isActive }) => (
-              isActive ? (
-                <Li isActive={isActive}>
-                  <Link to={link}>
-                    {label}
-                  </Link>
-                </Li>
-              ) : (
-                  <Li isActive={isActive}>
-                    {label}
-                  </Li>
-                )
+              <Li isActive={isActive}>
+                {isActive ? <Link to={link}>{label}</Link> : label}
+              </Li>
             )))
           }
         </ul>

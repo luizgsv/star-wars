@@ -27,12 +27,26 @@ export function Character() {
 
   const { data: peopleData } = useQuery(['character', params], async () => getCharacter(params))
   
+  /**
+   * Função handlePagination
+   * 
+   * Esta função é chamada para lidar com a paginação de resultados de pesquisa.
+   * 
+   * @param {string} link - O link da página de destino para a qual a paginação deve ocorrer.
+   */
   const handlePagination = async (link: string) => {
     const cutSearch = link.split('/').pop() ?? ''
     getCharacter(cutSearch)
     navigate('/character' + cutSearch)
   }
 
+  /**
+   * Função handleSearch
+   * 
+   * Esta função é chamada em resposta a eventos de mudança em um input e realiza uma pesquisa de filtragem.
+   * 
+   * @param {ChangeEvent<HTMLInputElement>} event - O evento de mudança que acionou a função.
+   */
   const handleSearch = async (event: ChangeEvent<HTMLInputElement>) => {
     const inputValue = event.currentTarget.value.toLowerCase();
 
@@ -52,19 +66,17 @@ export function Character() {
   return (
     <Container>
 
-      <InputComponent handleSearch={handleSearch}/>
+      {!peopleDataFilter && (
+        <ButtonStyle onClick={() => charactersData && handlePagination(charactersData.previous)}>
+          <ChevronLeft />
+        </ButtonStyle>
+      )}
 
       {charactersData && ( 
 
         <section>
-          {!peopleDataFilter && (
-            <ButtonStyle onClick={() => handlePagination(charactersData.previous)}>
-              <ChevronLeft />
-            </ButtonStyle>
-          )}
-
+          <InputComponent handleSearch={handleSearch}/>
           <article>  
-
             {React.Children.toArray(
               charactersData.results.map(({ name, url }) => (
                 <Card value={name} link={'/person'} request={url} />
@@ -72,13 +84,15 @@ export function Character() {
             }
           </article>
 
-          {!peopleDataFilter && (          
-            <ButtonStyle onClick={() => handlePagination(charactersData.next)}>
-              <ChevronRight />
-            </ButtonStyle>
-          )}
+
         </section>
       )}
+
+      {!peopleDataFilter && (          
+        <ButtonStyle onClick={() => charactersData && handlePagination(charactersData.next)}>
+          <ChevronRight />
+        </ButtonStyle>
+      )} 
 
     </Container>
   )

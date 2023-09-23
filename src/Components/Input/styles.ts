@@ -21,4 +21,16 @@ export const Input = styled.input`
   width: 24rem;
   height: 2rem;
 
+  @media(max-width: 1080px) {
+    width: 20rem;
+  }
+
+  @media(max-width: 720px) {
+    width: 18rem;
+  }
+
+  @media(max-width: 380px) {
+    width: 16rem;
+  }
+
 `

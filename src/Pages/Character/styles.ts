@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.main`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
   align-items: center;
   justify-content: center;
@@ -12,9 +12,11 @@ export const Container = styled.main`
 
   gap: 0.5rem;
 
+  padding: 0.5rem;
+
   section {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
 
     align-items: center;
     
@@ -24,6 +26,32 @@ export const Container = styled.main`
    
     gap: 1rem;
 
+    padding: 0.5rem;
+
+    @media (max-width: 480px) {
+      height: 20rem;
+    }
+
+    @media (min-width: 481px) and (max-width: 767px) {
+      height: 18rem;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      height: 18rem;
+    }
+    
+    @media (min-width: 992px) and (max-width: 1199px) {
+      height: 18rem;
+    }
+
+    @media (min-width: 1200px) and (max-width: 1919px) {
+      height: 16rem;
+    }
+
+    @media (min-width: 1920px) {
+      height: 16rem;
+    }
+    
     article {
       display: flex;
       flex-direction: row;
@@ -31,9 +59,9 @@ export const Container = styled.main`
       justify-content: center;
 
       height: 100%;
-      
-      padding: 0.5rem;
 
+      max-width: 80rem;
+      
       flex-wrap: wrap;
 
       overflow: auto;

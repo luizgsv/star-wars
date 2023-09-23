@@ -16,21 +16,21 @@ const GlobalStyles = createGlobalStyle`
       1px 1px 0 var(--yellow);
   }
 
-  @media(max-width: 1080px) {
-    html{
-      font-size: 93.75%;
+  @media (max-width: 1080px) {
+    html {
+      font-size: 93.75%; 
     }
   }
 
-  @media(max-width: 720px) {
-    html{
-      font-size: 87.5%;
+  @media (max-width: 720px) {
+    html {
+      font-size: 87.5%; 
     }
   }
 
-  @media(max-width: 380px) {
-    html{
-      font-size: 75%;
+  @media (max-width: 380px) {
+    html {
+      font-size: 75%; 
     }
   }
 

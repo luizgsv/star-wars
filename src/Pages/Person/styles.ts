@@ -19,9 +19,38 @@ export const Container = styled.main`
     justify-content: flex-start;
     align-items: flex-start;
 
+    @media (min-width: 481px) and (max-width: 767px) {
+      justify-content: center;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+      justify-content: center;
+      align-items: center;
+    }
+
     img {
       height: 20rem;
       width: auto;
+
+      @media (max-width: 480px) {
+        display: none;
+      }
+
+      @media (min-width: 481px) and (max-width: 767px) {
+        height: 18rem;
+        width: auto;
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        height: 18rem;
+        width: auto;
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        height: 20rem;
+        width: auto;
+      }
     }
 
     gap: 2rem;
@@ -30,24 +59,37 @@ export const Container = styled.main`
       display: flex;
       flex-direction: column;
 
+      justify-content: center;
+      align-items: center;
+
+      width: 38rem;
+
+      @media (max-width: 480px) {
+        width: 26rem;
+        margin-top: 1rem;
+      }
+
+      @media (min-width: 481px) and (max-width: 767px) {
+        width: 32rem;
+        margin-top: 1rem;;
+      }
+
+      @media (min-width: 768px) and (max-width: 991px) {
+        width: 32rem;
+      }
+
+      @media (min-width: 992px) and (max-width: 1199px) {
+        width: 34rem;
+      }
+
       gap: 1rem;
 
-        ul {
-          display: flex;
-          flex-direction: column;
-
-          align-items: center;
-          justify-content: center;
-
-          gap: 1rem;
-
-          h3 {
-            color: var(--yellow);
-            font-size: 1rem;
-            text-align: center;
-            font-weight: 400;
-          }
-        }
+      h3 {
+        color: var(--yellow);
+        font-size: 1rem;
+        text-align: center;
+        font-weight: 400;
+      }
      
       article.card-info {
         display: flex;
@@ -58,11 +100,12 @@ export const Container = styled.main`
 
         background-color: var(--gray);
 
-        width: 36rem;
-        height: 10rem;
-
         padding: 1.5rem;
-         
+
+        width: 100%;
+
+        height: 10rem;
+  
         > section {
           display: flex;
 
@@ -71,14 +114,19 @@ export const Container = styled.main`
 
           gap: 1.5rem;
 
-          width: fit-content;
-          height: fit-content;
+          width: 100%;
+          height: 100%;
 
-            span {
-              font-size: 1rem;
-              font-weight: 400;
-            }
+          > div {
+            display: flex;
+            flex-direction: column;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 0.5rem;
           }
+        }
           
       }
 
@@ -88,7 +136,7 @@ export const Container = styled.main`
 
         gap: 1rem;
 
-        width: 36rem;
+        width: 100%;
 
         overflow: auto;
 
@@ -107,6 +155,15 @@ export const Container = styled.main`
 
           max-width: 20rem;
           min-width: 10rem;
+
+          gap: 0.5rem;
+
+          h3 {
+            color: var(--yellow);
+            font-size: 1rem;
+            text-align: center;
+            font-weight: 400;
+          }
         }
       }
     }

@@ -31,6 +31,18 @@ export const Container = styled.main`
       li {
         font-size: 2rem;
         transition: .2s all;
+
+        @media(max-width: 1080px) {
+          font-size: 1.5rem;
+        }
+
+        @media(max-width: 720px) {
+          font-size: 1.5rem;
+        }
+
+        @media(max-width: 380px) {
+          font-size: 1.5rem;
+        }
       }
 
       :has(:hover, :focus) {
@@ -53,7 +65,7 @@ export const Container = styled.main`
     position: absolute;
 
     svg {
-      height: 34rem;
+      height: 30rem;
       width: auto;
       object-fit: cover;  
     }
@@ -61,23 +73,20 @@ export const Container = styled.main`
     @media(max-width: 1080px) {
 
       svg {
-        height: 26rem;
+        height: 22rem;
       }
     }
 
     @media(max-width: 720px) {
 
-      top: 4.5rem;
-      right: 0;
-
       svg {
-        height: 22rem;
+        height: 18rem;
       }
     }
 
     @media(max-width: 380px) {
       svg {
-        height: 20rem;
+        height: 16rem;
       }
     }
   }

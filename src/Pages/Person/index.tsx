@@ -5,27 +5,20 @@ import { useQuery } from "@tanstack/react-query"
 import React, { useState } from "react"
 import { useParams } from "react-router-dom"
 import { Container } from "./styles"
-
-export interface PersonFormatted {
-  name: string
-  infos: Info[]
-  films: Film[]
-}
-
-export interface Info {
-  label: string
-  value: string
-}
-
-export interface Film {
-  release_date: string
-  title: string
-}
+import { Film, PersonFormatted } from "@src/Models/Interfaces/personFormatted"
 
 export function Person() {
 
   const { id } = useParams()
 
+  /**
+   * Hook useState para definir o estado de uma imagem.
+   * 
+   * Este hook inicializa o estado de uma variável chamada 'image' com uma URL de imagem com base no 'id'.
+   * 
+   * @param {string} id - O identificador único associado à imagem.
+   * @returns {string} - O estado atual da imagem.
+   */
   const [image] = useState(`https://starwars-visualguide.com/assets/img/characters/${id}.jpg`)
 
   const getPersonById = async (id?: string) => {
@@ -40,8 +33,7 @@ export function Person() {
     }
   }
 
-  const getFilmsById = async (id: number) => {   
-    
+  const getFilmsById = async (id: number) => {     
     try {
       const { data } = await apiStarWars.get<Film>(`https://swapi.dev/api/films/${id}`)
       return data
@@ -50,13 +42,27 @@ export function Person() {
     }
   }
 
+  /**
+   * Função formatterObject
+   * 
+   * Esta função formata um objeto do tipo IPerson, adicionando informações adicionais sobre os filmes relacionados.
+   * 
+   * @param {IPerson} object - O objeto IPerson que será formatado.
+   * @returns {Promise<Object>} - Uma Promise que resolve em um objeto formatado.
+   */
   async function formatterObject(object: IPerson) {
     const array = []
 
+    // Itera pelos filmes da pessoa para buscar informações adicionais.
     for (const film of object.films) { 
+
+      // Extrai o ID do filme a partir da URL.
       const cutId = film.split('/').at(-2) ?? 0
+
+      // Busca informações sobre o filme com base no ID
       const findFilm = await getFilmsById(+cutId)
 
+      // Cria um objeto com informações relevantes sobre o filme.
       const objectFilm = {
         release_date: findFilm.release_date,
         title: findFilm.title
@@ -65,7 +71,8 @@ export function Person() {
       array.push(objectFilm)
     }
 
-    const tempObject = {
+    // Cria um objeto formatado com informações sobre a pessoa e os filmes.
+    const tempObject: PersonFormatted = {
       name: object.name,
       infos: [
         {label: 'Ano de Nascimento', value: object.birth_year},
@@ -75,13 +82,24 @@ export function Person() {
       films: array
     }
 
-    return tempObject
-    
+    return tempObject 
   }
 
+  /**
+   * Uso de useQuery para buscar detalhes de um personagem por ID.
+   * 
+   * A função useQuery é usada para buscar dados com base na chave ['person', id].
+   * - A chave 'person' indica o tipo de busca ou recurso.
+   * - 'id' é a identificação única da pessoa que está sendo buscada.
+   * 
+   * @returns {Object} - Um objeto contendo os dados da pessoa, após formatação, se estiverem disponíveis.
+   */
   const { data } = useQuery(['person', id], async () => {
+    // Busca os dados da pessoa por ID.
     const data = await getPersonById(id)
     if (!data) return 
+
+    // Formata os dados de personagens junto com o film.
     const response = await formatterObject(data)
     return response
   })
@@ -104,14 +122,10 @@ export function Person() {
             
               {
                 React.Children.toArray(data.infos.map(({ label, value }) => (
-                  <ul>
-                    <li>
-                      <h3>{ label }</h3>
-                    </li>
-                    <li>
-                      <span>{ value }</span>
-                    </li>
-                  </ul>
+                  <div>
+                    <h3>{ label }</h3>
+                    <span>{ value }</span>
+                  </div>
                 )))
               }
 
@@ -123,14 +137,8 @@ export function Person() {
           {
             React.Children.toArray(data.films.map(({ release_date, title }) => (
               <article className="card-film">
-                <ul>
-                  <li>
-                    <h3>{ title }</h3>
-                  </li>
-                  <li>
-                    <span>{ release_date }</span>
-                  </li>
-                </ul>
+                <h3>{ title }</h3>
+                <span>{ release_date }</span>
               </article>
             )))
           }            

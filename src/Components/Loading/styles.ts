@@ -24,12 +24,39 @@ export const Container = styled.main`
 
   img {
     height: auto;
-    width: 20%;
+    width: 30rem;
     object-fit: cover;  
+    
+    @media(max-width: 1080px) {
+      height: auto; 
+      width: 20rem;
+    }
+
+    @media(max-width: 720px) {
+      height: auto;
+      width: 16rem;
+    }
+
+    @media(max-width: 380px) {
+      height: auto;
+      width: 14rem;
+    }
   }
 
   span {
     color: var(--black);
     font-size: 4rem;
+
+    @media(max-width: 1080px) {
+      font-size: 3.5rem;
+    }
+
+    @media(max-width: 720px) {
+      font-size: 2.5rem;
+    }
+
+    @media(max-width: 380px) {
+      font-size: 2rem;
+    }
   }
 `
